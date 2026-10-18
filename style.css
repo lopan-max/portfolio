@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap");
 
 html {
+  color-scheme: light dark;
   --color-red: oklch(55% 0.23 25);
   --color-gold: oklch(78% 0.14 90);
   --color-black: oklch(14% 0.01 50);
@@ -8,7 +9,7 @@ html {
   --color-accent: var(--color-red);
   accent-color: var(--color-accent);
   background: var(--color-black);
-  color: var(--color-black);
+  color: canvastext;
 }
 
 body {
@@ -18,11 +19,22 @@ body {
   font: 112.5%/1.5 "Source Sans 3", system-ui, sans-serif;
   max-width: 70rem;
   margin-inline: max(1.5em, (100% - 70rem) / 2);
-  padding: 0 1.5rem 2.5rem;
-  background: var(--color-white);
+  padding: 2.75rem 1.5rem 2.5rem;
+  background: canvas;
+  color: canvastext;
   border-block: 0.35rem solid var(--color-gold);
   min-height: 100vh;
   box-sizing: border-box;
+  position: relative;
+}
+
+label.color-scheme {
+  position: absolute;
+  top: 0.65rem;
+  right: 1rem;
+  font-size: 80%;
+  z-index: 10;
+  color: var(--color-gold);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -36,19 +48,19 @@ h1, h2, h3, h4, h5, h6 {
   &:is(h1) {
     font-size: clamp(2.4rem, 5vw, 3.75rem);
     margin-block: 0.5em 0.25em;
-    color: var(--color-black);
+    color: canvastext;
     border-left: 0.2em solid var(--color-red);
     padding-left: 0.35em;
   }
 
   &:is(h2) {
     font-size: 1.35em;
-    color: var(--color-black);
+    color: canvastext;
   }
 
   &:is(h3) {
     font-size: 1.15em;
-    color: var(--color-black);
+    color: canvastext;
   }
 }
 
@@ -75,6 +87,7 @@ nav li {
 }
 
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   margin: 0 -1.5rem 1.5em;
   padding-inline: 0.5rem;
@@ -102,15 +115,16 @@ nav a.current {
 }
 
 nav a:hover {
-  border-bottom: 0.4em solid var(--color-red);
+  border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.45em;
-  background-color: oklch(from var(--color-red) 25% 0.08 h);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   color: var(--color-white);
 }
 
 input,
 textarea,
-button {
+button,
+select {
   font: inherit;
 }
 
@@ -119,8 +133,8 @@ form {
   grid-template-columns: auto 1fr;
   gap: 1em;
   padding: 1.25rem;
-  background: var(--color-white);
-  border: 0.15rem solid var(--color-black);
+  background: canvas;
+  border: 0.15rem solid canvastext;
   box-shadow: 0.4rem 0.4rem 0 var(--color-gold);
 }
 
@@ -141,17 +155,17 @@ form > button {
 
 input,
 textarea {
-  border: 0.12rem solid var(--color-black);
+  border: 0.12rem solid canvastext;
   padding: 0.55em 0.7em;
-  background: var(--color-white);
-  color: var(--color-black);
+  background: canvas;
+  color: canvastext;
 }
 
 input:focus,
 textarea:focus {
   outline: 0.15rem solid var(--color-gold);
   outline-offset: 0.1rem;
-  border-color: var(--color-black);
+  border-color: canvastext;
 }
 
 button {
@@ -180,21 +194,21 @@ button:hover {
     display: grid;
     grid-template-rows: subgrid;
     grid-row: span 3;
-    background: var(--color-white);
-    border: 0.12rem solid var(--color-black);
+    background: canvas;
+    border: 0.12rem solid canvastext;
     padding: 1rem;
     box-shadow: 0.35rem 0.35rem 0 var(--color-gold);
   }
 
   h2 {
     margin: 0;
-    color: var(--color-black);
+    color: canvastext;
     border-bottom: 0.15rem solid var(--color-red);
     padding-bottom: 0.35em;
   }
 
   img {
-    border-color: var(--color-black);
+    border-color: canvastext;
   }
 
   p {
@@ -209,7 +223,7 @@ section {
 }
 
 article header p {
-  color: oklch(from var(--color-black) 40% 0.01 h);
+  color: color-mix(in oklch, canvastext, canvas 45%);
   margin-top: 0.25em;
 }
 
