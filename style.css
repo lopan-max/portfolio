@@ -231,3 +231,24 @@ time {
   color: var(--color-red);
   font-weight: 600;
 }
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35em 1em;
+  margin: 0;
+}
+
+#profile-stats dt {
+  grid-row: 1;
+  font-family: Oswald, Impact, sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+#profile-stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 1.5em;
+  color: var(--color-red);
+}
