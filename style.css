@@ -185,6 +185,13 @@ button:hover {
   color: var(--color-gold);
 }
 
+.searchBar {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-block: 0 1.5em;
+}
+
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -213,6 +220,13 @@ button:hover {
 
   p {
     margin: 0;
+  }
+
+  .project-year {
+    margin-top: 0.4em;
+    font-family: Baskerville, "Palatino Linotype", Palatino, serif;
+    font-variant-numeric: oldstyle-nums;
+    color: var(--color-gold);
   }
 }
 
@@ -251,4 +265,74 @@ time {
   margin: 0;
   font-size: 1.5em;
   color: var(--color-red);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5em 2em;
+  margin-block: 2em;
+}
+
+#projects-pie-plot {
+  width: min(20em, 100%);
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  flex: 0 0 auto;
+
+  path {
+    cursor: pointer;
+    transition: 300ms;
+  }
+
+  &:has(path:hover) {
+    path:not(:hover) {
+      opacity: 0.5;
+    }
+  }
+}
+
+.legend {
+  box-sizing: border-box;
+  flex: 1 1 12em;
+  min-width: 10em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 0.85em 1.1em;
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+  border: 0.12rem solid canvastext;
+  box-shadow: 0.35rem 0.35rem 0 var(--color-gold);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  cursor: pointer;
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.9em;
+  aspect-ratio: 1 / 1;
+  background: var(--color);
+  border-radius: 0.15em;
+  flex: none;
+}
+
+.legend em {
+  font-family: Baskerville, "Palatino Linotype", Palatino, serif;
+  color: color-mix(in oklch, canvastext, canvas 30%);
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
 }
