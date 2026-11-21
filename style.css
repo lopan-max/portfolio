@@ -315,7 +315,7 @@ dl.stats dd {
 #chart .tick text {
   fill: canvastext;
   font-family: "Source Sans 3", system-ui, sans-serif;
-  font-size: 12px;
+  font-size: 32px;
 }
 
 #chart .domain,
@@ -336,6 +336,10 @@ dl.stats dd {
   transform-origin: center;
   transform-box: fill-box;
   cursor: pointer;
+
+  @starting-style {
+    r: 0;
+  }
 }
 
 #chart circle:hover {
@@ -491,5 +495,190 @@ dl.info[hidden]:not(:hover, :focus-within) {
 
   &:is(path) {
     fill: var(--color);
+  }
+}
+
+.commit-filter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75em;
+  margin: 0.5em 0 0.25em;
+  font-family: Oswald, Impact, sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+#commit-progress {
+  flex: 1;
+  min-width: 8rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  accent-color: var(--color-red);
+}
+
+#commit-time {
+  margin-left: auto;
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-red);
+}
+
+#scrolly-1,
+#scrolly-2 {
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+  margin-block: 1.5rem 2.5rem;
+
+  > * {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+#scatter-story,
+#files-story {
+  position: relative;
+}
+
+#scatter-plot,
+#files-plot {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  align-self: flex-start;
+}
+
+#scatter-plot {
+  height: 50vh;
+  min-height: 22rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#scatter-plot h2,
+#files-story h2,
+#scatter-story h2 {
+  margin-top: 0;
+}
+
+#scatter-plot #chart {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+}
+
+#scatter-plot #chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+#scatter-plot #selection-count {
+  margin: 0.35em 0 0;
+}
+
+#files-plot {
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  padding-right: 0.25rem;
+}
+
+.step {
+  min-height: 55vh;
+  margin: 0 0 1rem;
+  padding: 0.25rem 0 1rem 0.85rem;
+  border-left: 0.2rem solid transparent;
+  opacity: 0.4;
+  transition: opacity 200ms, border-color 200ms;
+}
+
+.step.is-active {
+  opacity: 1;
+  border-left-color: var(--color-red);
+}
+
+.step:last-child {
+  min-height: 75vh;
+}
+
+#file-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em 1em;
+  margin: 0 0 0.85em;
+}
+
+#file-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+#file-legend span::before {
+  content: "";
+  width: 0.7em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color);
+}
+
+#files {
+  display: grid;
+  grid-template-columns: minmax(7rem, 1fr) minmax(0, 4fr);
+  gap: 0.85em 1em;
+  margin: 0;
+
+  > div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: start;
+  }
+
+  dt {
+    grid-column: 1;
+  }
+
+  code {
+    overflow-wrap: break-word;
+  }
+
+  small {
+    display: block;
+    margin-top: 0.15em;
+    font-size: 0.75em;
+    opacity: 0.65;
+  }
+
+  dd {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    align-content: start;
+    gap: 0.15em;
+    padding-top: 0.6em;
+    margin: 0;
+  }
+}
+
+.loc {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: var(--color, steelblue);
+  border-radius: 50%;
+  transition: opacity 200ms, scale 200ms, background-color 200ms;
+
+  @starting-style {
+    opacity: 0;
+    scale: 0;
   }
 }
